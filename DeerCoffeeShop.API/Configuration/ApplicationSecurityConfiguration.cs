@@ -42,11 +42,11 @@ namespace DeerCoffeeShop.Configuration
                     {
                         ValidateAudience = false,
                         ValidateIssuer = false,
-                        ValidateIssuerSigningKey = true,
+                        ValidateIssuerSigningKey = false,
                         ValidateLifetime = true,
-                        ValidIssuer = configuration.GetSection("Security.Bearer:Authority").Get<string>(),
-                        ValidAudience = configuration.GetSection("Security.Bearer:Audience").Get<string>(),
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Deer Coffee Shop @P!")),
+                        // ValidIssuer = configuration.GetSection("Security.Bearer:Authority").Get<string>(),
+                        // ValidAudience = configuration.GetSection("Security.Bearer:Audience").Get<string>(),
+                        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Deer Coffee Shop @P!")),
                     };
                 });
 
