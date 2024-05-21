@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - API", "1 - API", "{48A29314-B722-4625-9EA3-3AEC47469CE6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{602AF3E0-8943-4B74-B71B-2D253848B66E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{5C65AB08-7215-488B-AC95-FE4BFAA8731D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{27F242F2-32D4-49E1-B907-9E8291AB900F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeerCoffeeShop.Domain", "DeerCoffeeShop.Domain\DeerCoffeeShop.Domain.csproj", "{E8D8D8DD-A908-47E3-8986-9174D091717F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeerCoffeeShop.Infrastructure", "DeerCoffeeShop.Infrastructure\DeerCoffeeShop.Infrastructure.csproj", "{0832A5AD-2C84-4491-A2FB-A6B2A50BD592}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeerCoffeeShop.Application", "DeerCoffeeShop.Application\DeerCoffeeShop.Application.csproj", "{01E4F476-B7CA-42C1-AE8C-7690BA1B636E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeerCoffeeShop.API", "DeerCoffeeShop.API\DeerCoffeeShop.API.csproj", "{91396757-4454-4B5B-889F-D23F49FD121D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8D8D8DD-A908-47E3-8986-9174D091717F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D8D8DD-A908-47E3-8986-9174D091717F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D8D8DD-A908-47E3-8986-9174D091717F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D8D8DD-A908-47E3-8986-9174D091717F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0832A5AD-2C84-4491-A2FB-A6B2A50BD592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0832A5AD-2C84-4491-A2FB-A6B2A50BD592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0832A5AD-2C84-4491-A2FB-A6B2A50BD592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0832A5AD-2C84-4491-A2FB-A6B2A50BD592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01E4F476-B7CA-42C1-AE8C-7690BA1B636E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E4F476-B7CA-42C1-AE8C-7690BA1B636E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E4F476-B7CA-42C1-AE8C-7690BA1B636E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E4F476-B7CA-42C1-AE8C-7690BA1B636E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91396757-4454-4B5B-889F-D23F49FD121D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91396757-4454-4B5B-889F-D23F49FD121D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91396757-4454-4B5B-889F-D23F49FD121D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91396757-4454-4B5B-889F-D23F49FD121D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E8D8D8DD-A908-47E3-8986-9174D091717F} = {5C65AB08-7215-488B-AC95-FE4BFAA8731D}
+		{0832A5AD-2C84-4491-A2FB-A6B2A50BD592} = {27F242F2-32D4-49E1-B907-9E8291AB900F}
+		{01E4F476-B7CA-42C1-AE8C-7690BA1B636E} = {602AF3E0-8943-4B74-B71B-2D253848B66E}
+		{91396757-4454-4B5B-889F-D23F49FD121D} = {48A29314-B722-4625-9EA3-3AEC47469CE6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {531EBE73-9DB7-4840-AE1C-D931ED876DC2}
+	EndGlobalSection
+EndGlobal
