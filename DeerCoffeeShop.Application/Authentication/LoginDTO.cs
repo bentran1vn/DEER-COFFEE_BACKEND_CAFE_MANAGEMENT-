@@ -19,12 +19,14 @@ namespace DeerCoffeeShop.Application.Authentication
         }
         public int Id { get; set; }
         public int RoleId { get; set; }
-        public static LoginDTO Create(int EmplopyeeID, int Role)
+        public required string RefreshToken { get; set; }
+        public static LoginDTO Create(int EmplopyeeID, int Role, string RefreshToken)
         {
             return new LoginDTO
             {
                 Id = EmplopyeeID,
-                RoleId = Role
+                RoleId = Role,
+                RefreshToken = RefreshToken
             };
         }
 

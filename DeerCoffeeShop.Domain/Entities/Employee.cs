@@ -50,5 +50,10 @@ namespace DeerCoffeeShop.Domain.Entities
         [DataType(DataType.Date)]
         public DateTime? NgayXoa { get; set; }
         public bool IsDeleted { get; set; }
+
+        public string RefreshToken { get; set; } =string.Empty;
+        public DateTime RefreshTokenExpiryTime { get; set; }
+
+
     }
 }

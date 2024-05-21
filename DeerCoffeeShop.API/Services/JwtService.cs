@@ -7,7 +7,12 @@ namespace DeerCoffeeShop.API.Services
 {
     public class JwtService
     {
-        public string CreateToken(int ID, int roles)
+        public class Token
+        {
+            public required string AccessToken { get; set; }
+            public required string RefreshToken { get; set; }
+        }
+        public Token CreateToken(int ID, int roles, string refreshToken)
         {
             var claims = new List<Claim>
             {
@@ -27,8 +32,12 @@ namespace DeerCoffeeShop.API.Services
                 claims: claims,
                 expires: DateTime.Now.AddYears(1),
                 signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var re = new Token
+            {
+                AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
+                RefreshToken = refreshToken
+            };
+            return re;
         }
     }
 }

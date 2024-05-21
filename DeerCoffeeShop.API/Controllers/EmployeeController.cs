@@ -15,7 +15,7 @@ public class EmployeeController(ISender sender, JwtService _jwtService) : BaseCo
     public async Task<IActionResult> Login(LoginQuery loginQuery, CancellationToken cancellationToken = default)
     {
         var loginDTO = await _sender.Send(new LoginQuery(loginQuery.EmployeeID, loginQuery.Password), cancellationToken);
-        var token = _jwtService.CreateToken(loginDTO.Id, loginDTO.RoleId);
+        var token = _jwtService.CreateToken(loginDTO.Id, loginDTO.RoleId,loginDTO.RefreshToken);
         return Ok(token);
     }
 }
