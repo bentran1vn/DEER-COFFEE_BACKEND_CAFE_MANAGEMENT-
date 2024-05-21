@@ -1,6 +1,5 @@
-using DeerCoffeeShop.Api.Configuration;
+using DeerCoffeeShop.API.Configuration;
 using DeerCoffeeShop.Application;
-using DeerCoffeeShop.Configuration;
 using DeerCoffeeShop.Filters;
 using DeerCoffeeShop.Infrastructure;
 using Serilog;
@@ -27,6 +26,7 @@ builder.Services.ConfigureProblemDetails();
 builder.Services.ConfigureApiVersioning();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.ConfigureSwagger();
+builder.Services.ConfigurationCors();
 // Build the app
 var app = builder.Build();
 

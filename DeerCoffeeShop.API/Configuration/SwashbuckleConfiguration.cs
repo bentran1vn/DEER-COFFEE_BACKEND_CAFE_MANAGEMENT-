@@ -8,7 +8,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
-namespace DeerCoffeeShop.Api.Configuration
+namespace DeerCoffeeShop.API.Configuration
 {
     public static class SwashbuckleConfiguration
     {

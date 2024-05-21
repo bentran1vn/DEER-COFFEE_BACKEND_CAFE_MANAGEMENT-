@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 
-namespace DeerCoffeeShop.Api.Configuration
+namespace DeerCoffeeShop.API.Configuration
 {
     public static class ApiVersioningConfiguration
     {

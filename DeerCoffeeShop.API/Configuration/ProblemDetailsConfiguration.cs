@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using System.Diagnostics;
 
-namespace DeerCoffeeShop.Configuration
+namespace DeerCoffeeShop.API.Configuration
 {
     public static class ProblemDetailsConfiguration
     {
