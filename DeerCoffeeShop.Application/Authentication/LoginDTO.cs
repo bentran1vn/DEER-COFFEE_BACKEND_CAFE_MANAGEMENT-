@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using DeerCoffeeShop.Application.Common.Mappings;
 using DeerCoffeeShop.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.Authentication
 {
@@ -18,14 +13,14 @@ namespace DeerCoffeeShop.Application.Authentication
 
         }
         public int Id { get; set; }
-        public int RoleId { get; set; }
+        public string RoleName { get; set; }
         public required string RefreshToken { get; set; }
-        public static LoginDTO Create(int EmplopyeeID, int Role, string RefreshToken)
+        public static LoginDTO Create(int EmplopyeeID, string Role, string RefreshToken)
         {
             return new LoginDTO
             {
                 Id = EmplopyeeID,
-                RoleId = Role,
+                RoleName = Role,
                 RefreshToken = RefreshToken
             };
         }

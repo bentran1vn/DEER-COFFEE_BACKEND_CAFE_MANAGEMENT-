@@ -2,7 +2,6 @@
 using DeerCoffeeShop.Domain.Entities;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DeerCoffeeShop.Infrastructure.Persistence.Configurations
 {

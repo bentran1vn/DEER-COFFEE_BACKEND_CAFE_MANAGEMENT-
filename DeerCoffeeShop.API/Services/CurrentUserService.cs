@@ -3,7 +3,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
-namespace DeerCoffeeShop.Services
+namespace DeerCoffeeShop.API.Services
 {
     public class CurrentUserService(IHttpContextAccessor httpContextAccessor, IAuthorizationService authorizationService) : ICurrentUserService
     {

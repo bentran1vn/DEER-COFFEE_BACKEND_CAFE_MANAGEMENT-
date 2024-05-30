@@ -1,7 +1,6 @@
 ﻿using DeerCoffeeShop.Application.Common.Behaviours;
 using DeerCoffeeShop.Application.Common.Validation;
 using FluentValidation;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 

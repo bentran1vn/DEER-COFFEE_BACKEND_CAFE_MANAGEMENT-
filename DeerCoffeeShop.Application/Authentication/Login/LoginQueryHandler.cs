@@ -1,16 +1,9 @@
-﻿using AutoMapper;
-using DeerCoffeeShop.Application.Authentication.Refrestoken.GenerateRefreshToken;
-using DeerCoffeeShop.Domain.Common.Exception;
+﻿using DeerCoffeeShop.Application.Authentication.Refrestoken.GenerateRefreshToken;
 using DeerCoffeeShop.Domain.Common.Exceptions;
 using DeerCoffeeShop.Domain.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DeerCoffeeShop.Application.Authentication.LoginQuery
+namespace DeerCoffeeShop.Application.Authentication.Login
 {
     internal class LoginQueryHandler(IEmployeeRepository _employeeRepository, ISender sender) : IRequestHandler<LoginQuery, LoginDTO>
     {
@@ -23,12 +16,12 @@ namespace DeerCoffeeShop.Application.Authentication.LoginQuery
             {
                 throw new IncorrectPasswordException("Password is incorrect");
             }
-
+            
             var refresh = sender.Send(new RefreshTokenCommand(), cancellationToken).Result.Token;
             user.RefreshToken = refresh;
             await _employeeRepository.UnitOfWork.SaveChangesAsync(cancellationToken);
 
-            return LoginDTO.Create(user.EmployeeID, user.RoleID, refresh);
+            return LoginDTO.Create(user.EmployeeID, "Admin", refresh);
         }
     }
 }

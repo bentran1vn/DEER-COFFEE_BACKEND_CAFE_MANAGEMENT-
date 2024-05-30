@@ -1,14 +1,13 @@
 ﻿using DeerCoffeeShop.Application.Common.Exceptions;
-using DeerCoffeeShop.Domain.Common.Exception;
 using DeerCoffeeShop.Domain.Common.Exceptions;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Diagnostics;
 
-namespace DeerCoffeeShop.Filters
+namespace DeerCoffeeShop.API.Filters
 {
-    public class ExceptionFilter : Microsoft.AspNetCore.Mvc.Filters.IExceptionFilter
+    public class ExceptionFilter : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
         {

@@ -12,7 +12,7 @@ namespace DeerCoffeeShop.API.Services
             public required string AccessToken { get; set; }
             public required string RefreshToken { get; set; }
         }
-        public Token CreateToken(int ID, int roles, string refreshToken)
+        public Token CreateToken(int ID, string roles, string refreshToken)
         {
             var claims = new List<Claim>
             {
@@ -27,8 +27,8 @@ namespace DeerCoffeeShop.API.Services
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                // issuer: "test",
-                // audience: "api",
+                 issuer: "https://deercoffeesystem.azurewebsites.net/",
+                 audience: "api",
                 claims: claims,
                 expires: DateTime.Now.AddYears(1),
                 signingCredentials: creds);

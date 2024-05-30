@@ -1,6 +1,5 @@
 ﻿using DeerCoffeeShop.API.Services;
 using DeerCoffeeShop.Application.Common.Interfaces;
-using DeerCoffeeShop.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
@@ -21,13 +20,13 @@ namespace DeerCoffeeShop.API.Configuration
             services.AddHttpContextAccessor();
 
             //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
             //    .AddJwtBearer(
             //        JwtBearerDefaults.AuthenticationScheme,
             //        options =>
             //        {
-            //            options.Authority = configuration.GetSection("Security.Bearer:Authority").Get<string>();
-            //            options.Audience = configuration.GetSection("Security.Bearer:Audience").Get<string>();
-
+            //            options.Authority = "https://deercoffeesystem.azurewebsites.net/";
+            //            options.Audience = "api";
             //            options.TokenValidationParameters.RoleClaimType = "role";
             //            options.SaveToken = true;
             //        });
@@ -40,13 +39,13 @@ namespace DeerCoffeeShop.API.Configuration
                 {
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateAudience = false,
-                        ValidateIssuer = false,
-                        ValidateIssuerSigningKey = false,
+                        ValidateAudience = true,
+                        ValidateIssuer = true,
+                        ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
-                        // ValidIssuer = configuration.GetSection("Security.Bearer:Authority").Get<string>(),
-                        // ValidAudience = configuration.GetSection("Security.Bearer:Audience").Get<string>(),
-                        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Deer Coffee Shop @P!")),
+                        ValidIssuer = "https://deercoffeesystem.azurewebsites.net/",
+                        ValidAudience = "api",
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Deer Coffee Shop @PI 123abc456 anh iu em")),
                     };
                 });
 
