@@ -15,7 +15,7 @@ namespace DeerCoffeeShop.Infrastructure
             services.AddDbContext<ApplicationDbContext>((sp, options) =>
             {
                 options.UseSqlServer(
-                    configuration.GetConnectionString("local"),
+                    configuration.GetConnectionString("Azure"),
                     b =>
                     {
                         b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
@@ -27,6 +27,9 @@ namespace DeerCoffeeShop.Infrastructure
             });
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IShiftRepostiry, ShiftRepository>();
+            services.AddTransient<IEmployeeShiftRepository, EmployeeShiftRepository>();
+            services.AddTransient<IRestaurantRepository, RestaurantRepository>();
             return services;
         }
     }

@@ -1,6 +1,7 @@
 using DeerCoffeeShop.API.Configuration;
 using DeerCoffeeShop.API.Filters;
 using DeerCoffeeShop.Application;
+using DeerCoffeeShop.Application.Common.Interfaces;
 using DeerCoffeeShop.Infrastructure;
 using Serilog;
 
@@ -48,7 +49,15 @@ app.UseEndpoints(endpoints =>
     _ = endpoints.MapControllers();
 });
 
+
+
 app.UseSwashbuckle(); // 'Configuration' is available on the app
+
+app.MapGet("v1/TestUserService", async (ICurrentUserService userService) =>
+{
+    var userID = userService.UserId;
+    return await Task.FromResult(userID);
+});
 
 // Start the application
 app.Run();
