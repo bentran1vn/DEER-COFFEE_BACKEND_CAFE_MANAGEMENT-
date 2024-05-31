@@ -38,6 +38,16 @@ namespace DeerCoffeeShop.API.Filters
                     .AddContextInformation(context);
                     context.ExceptionHandled = true;
                     break;
+                case FormException exception:
+                    context.Result = new UnprocessableEntityObjectResult(new
+                    {
+                        Status = exception.StatusCode,
+                        Detail = exception.Message,
+                        Data = exception.DataError
+                    })
+                        .AddContextInformation(context);
+                    context.ExceptionHandled = true;
+                    break;
                 case IncorrectPasswordException exception:
                     context.Result = new BadRequestObjectResult(new ProblemDetails
                     {
