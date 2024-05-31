@@ -8,26 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using DeerCoffeeShop.Domain.Common.Exceptions;
 using AutoMapper;
+using DeerCoffeeShop.Application.Common.Pagination;
 
 namespace DeerCoffeeShop.Application.EmployeeShift.GetAll
 {
-    public class GetAllEmployeeShiftQueryHandler : IRequestHandler<GetAllEmployeeShiftQuery, List<EmployeeShiftDto>>
+    public class GetAllEmployeeShiftQueryHandler(IEmployeeShiftRepository employeeShiftRepository, IMapper mapper) : IRequestHandler<GetAllEmployeeShiftQuery, PagedResult<EmployeeShiftDto>>
     {
-        private readonly IEmployeeShiftRepository _employeeShiftRepository;
-        private readonly IMapper _mapper;
-        
-        public GetAllEmployeeShiftQueryHandler(IEmployeeShiftRepository employeeShiftRepository, IMapper mapper)
-        {
-            _employeeShiftRepository = employeeShiftRepository;
-            _mapper = mapper;
-        }
+        private readonly IEmployeeShiftRepository _employeeShiftRepository = employeeShiftRepository;
+        private readonly IMapper _mapper = mapper;
 
-        public async Task<List<EmployeeShiftDto>> Handle(GetAllEmployeeShiftQuery query, CancellationToken cancellationToken)
+        public async Task<PagedResult<EmployeeShiftDto>> Handle(GetAllEmployeeShiftQuery query, CancellationToken cancellationToken)
         {
-            var list = await _employeeShiftRepository.FindAllAsync(x => (x.NguoiXoaID == null && x.NgayXoa == null) || !x.IsDeleted, cancellationToken);
-            if (list.Count == 0)
+            var list = await _employeeShiftRepository.FindAllAsync(x => (x.NguoiXoaID == null && x.NgayXoa == null) || !x.IsDeleted,query.PageNumber, query.PageSize, cancellationToken);
+            if (list.TotalCount == 0)
                 throw new NotFoundException("None employee shift was found!");
-            return list.MapToListEmployeeShiftDto(_mapper);
+            return PagedResult<EmployeeShiftDto>.Create
+                (
+                    totalCount: list.TotalCount,
+                    pageCount: list.PageCount,
+                    pageSize: query.PageSize,
+                    pageNumber: query.PageNumber,
+                    data: list.MapToListEmployeeShiftDto(_mapper)
+                );
         }
     }
 }

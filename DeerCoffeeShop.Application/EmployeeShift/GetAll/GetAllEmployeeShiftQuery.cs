@@ -1,4 +1,6 @@
 ﻿using DeerCoffeeShop.Application.Common.Interfaces;
+using DeerCoffeeShop.Application.Common.Pagination;
+using DeerCoffeeShop.Application.Common.Security;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,8 +10,10 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.EmployeeShift.GetAll
 {
-    public class GetAllEmployeeShiftQuery : IRequest<List<EmployeeShiftDto>>, IQuery
+    [Authorize]
+    public class GetAllEmployeeShiftQuery(int pageNo, int pageSize) : IRequest<PagedResult<EmployeeShiftDto>>, IQuery
     {
-        public GetAllEmployeeShiftQuery() { }
+        public int PageNumber { get; } = pageNo;
+        public int PageSize { get; } = pageSize;
     }
 }

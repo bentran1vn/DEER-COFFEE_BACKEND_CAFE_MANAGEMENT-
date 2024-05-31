@@ -1,4 +1,5 @@
 ﻿using DeerCoffeeShop.Application.Common.Interfaces;
+using DeerCoffeeShop.Application.Common.Security;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,24 +9,16 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.Shift.Create
 {
-    public class CreateShiftCommand : IRequest<string>, ICommand
+    [Authorize]
+    public class CreateShiftCommand() : IRequest<string>, ICommand
     {
-        public CreateShiftCommand() { }
 
-        public CreateShiftCommand(string shiftName, DateTime shiftStart, DateTime shiftEnd, string shiftDescription)
-        {
-            ShiftName = shiftName;
-            ShiftStart = shiftStart;
-            ShiftEnd = shiftEnd;
-            ShiftDescription = shiftDescription;
-        }
+        public required string shift_name { get; set; }
 
-        public required string ShiftName { get; set; }
+        public required DateTime shift_start {  get; set; }
 
-        public required DateTime ShiftStart { get; set; }
+        public required DateTime shift_end {  get; set; }
 
-        public required DateTime ShiftEnd { get; set; }
-
-        public required string ShiftDescription { get; set; }
+        public required string shift_description {  get; set; }
     }
 }

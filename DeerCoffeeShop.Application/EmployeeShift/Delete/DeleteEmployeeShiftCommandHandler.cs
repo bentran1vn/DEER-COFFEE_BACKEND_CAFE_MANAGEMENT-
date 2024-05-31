@@ -11,23 +11,17 @@ using DeerCoffeeShop.Domain.Common.Exceptions;
 
 namespace DeerCoffeeShop.Application.EmployeeShift.Delete
 {
-    public class DeleteEmployeeShiftCommandHandler : IRequestHandler<DeleteEmployeeShiftCommand, string>
+    public class DeleteEmployeeShiftCommandHandler(IEmployeeShiftRepository employeeShiftRepository, ICurrentUserService currentUserService) : IRequestHandler<DeleteEmployeeShiftCommand, string>
     {
-        private readonly IEmployeeShiftRepository _employeeShiftRepository;
-        private readonly ICurrentUserService _currentUserService;
-
-        public DeleteEmployeeShiftCommandHandler(IEmployeeShiftRepository employeeShiftRepository, ICurrentUserService currentUserService)
-        {
-            _employeeShiftRepository = employeeShiftRepository;
-            _currentUserService = currentUserService;
-        }
+        private readonly IEmployeeShiftRepository _employeeShiftRepository = employeeShiftRepository;
+        private readonly ICurrentUserService _currentUserService = currentUserService;
 
         public async Task<string> Handle(DeleteEmployeeShiftCommand request, CancellationToken cancellationToken)
         {
             var foundObject = await _employeeShiftRepository.FindAsync(x => x.EmployeeID.Equals(request.EmployeeID)
             && x.RestaurantID.Equals(request.RestaurantID)
             && x.ShiftID == request.ShiftID
-            && (x.NguoiXoaID == null || x.IsDeleted == true)) ?? throw new NotFoundException("Không tìm thấy ca trực của nhân viên thuộc cửa hàng");
+            && (x.NguoiXoaID == null || x.IsDeleted == true)) ?? throw new NotFoundException("None employee shift of restaurant was found!");
 
             foundObject.NguoiXoaID = _currentUserService.UserId;
             foundObject.NgayXoa = DateTime.Now;

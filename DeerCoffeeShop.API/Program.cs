@@ -52,12 +52,5 @@ app.UseEndpoints(endpoints =>
 
 
 app.UseSwashbuckle(); // 'Configuration' is available on the app
-
-app.MapGet("v1/TestUserService", async (ICurrentUserService userService) =>
-{
-    var userID = userService.UserId;
-    return await Task.FromResult(userID);
-});
-
 // Start the application
 app.Run();

@@ -16,32 +16,31 @@ namespace DeerCoffeeShop.Application.Shift.Update
 
         public void Configure()
         {
-            RuleFor(x => x.ShiftEnd.Hour)
-                  .GreaterThan(x => x.ShiftStart.Hour)
-                  .WithMessage("Shift end must later than shift start!");
+            RuleFor(x => x.shift_end.Hour)
+                 .GreaterThan(x => x.shift_start.Hour)
+                 .WithMessage("Shift end must later than shift start!");
 
-            RuleFor(x => x.ShiftStart.Day.CompareTo(x.ShiftEnd.Day))
+            RuleFor(x => x.shift_start.Day.CompareTo(x.shift_end.Day))
                 .Equal(0)
                 .WithMessage("Shift time is not illogical!");
 
-            RuleFor(x => x.ShiftStart.Month.CompareTo(x.ShiftEnd.Month))
+            RuleFor(x => x.shift_start.Month.CompareTo(x.shift_end.Month))
                 .Equal(0)
                 .WithMessage("Shift time is not illogical!");
 
-            RuleFor(x => x.ShiftStart.Year.CompareTo(x.ShiftEnd.Year))
+            RuleFor(x => x.shift_start.Year.CompareTo(x.shift_end.Year))
                 .Equal(0)
                 .WithMessage("Shift time is not illogical!");
 
-            RuleFor(x => x.ShiftStart)
+            RuleFor(x => x.shift_start)
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Shift's start times must not be empty!");
 
-            RuleFor(x => x.ShiftEnd)
+            RuleFor(x => x.shift_end)
                 .NotNull()
                 .NotEmpty()
                 .WithMessage("Shift's end times must not be empty!");
-
         }
     }
 }

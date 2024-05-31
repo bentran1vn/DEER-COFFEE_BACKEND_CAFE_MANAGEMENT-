@@ -8,26 +8,17 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.Shift.Update
 {
-    public class UpdateShiftCommand : IRequest<string>, ICommand
+    public class UpdateShiftCommand() : IRequest<string>, ICommand
     {
-        public UpdateShiftCommand() { }
+        public required int shift_id { get; set; }
 
-        public UpdateShiftCommand(string shiftName, DateTime shiftStart, DateTime shiftEnd, string shiftDescription)
-        {
-            ShiftName = shiftName;
-            ShiftStart = shiftStart;
-            ShiftEnd = shiftEnd;
-            ShiftDescription = shiftDescription;
-        }
+        public string? shift_name { get; set; }
 
-        public required int ShiftId { get; set; }
+        public DateTime shift_start { get; set; }
 
-        public string? ShiftName { get; set; }
+        public DateTime shift_end { get; set; }
 
-        public DateTime ShiftStart { get; set; }
+        public string? shift_description { get; set; }
 
-        public DateTime ShiftEnd { get; set; }
-
-        public string? ShiftDescription { get; set; }
     }
 }

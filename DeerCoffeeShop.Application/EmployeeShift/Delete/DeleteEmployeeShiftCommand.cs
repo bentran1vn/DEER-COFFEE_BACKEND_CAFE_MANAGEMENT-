@@ -1,4 +1,5 @@
 ﻿using DeerCoffeeShop.Application.Common.Interfaces;
+using DeerCoffeeShop.Application.Common.Security;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,11 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.EmployeeShift.Delete
 {
-    public class DeleteEmployeeShiftCommand : IRequest<string>, ICommand
+    [Authorize]
+    public class DeleteEmployeeShiftCommand(string employeeID, string restaurantID, int shiftID) : IRequest<string>, ICommand
     {
-        public string EmployeeID { get; set; }
-        public string RestaurantID { get; set; }
-        public int ShiftID { get; set; }
-
-        public DeleteEmployeeShiftCommand() { }
-
-        public DeleteEmployeeShiftCommand(string employeeID, string restaurantID, int shiftID)
-        {
-            EmployeeID = employeeID;
-            RestaurantID = restaurantID;
-            ShiftID = shiftID;
-        }
+        public string EmployeeID { get; } = employeeID;
+        public string RestaurantID { get; } = restaurantID;
+        public int ShiftID { get; } = shiftID;
     }
 }

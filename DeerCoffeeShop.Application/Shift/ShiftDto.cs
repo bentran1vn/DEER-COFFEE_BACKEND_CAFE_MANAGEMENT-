@@ -14,7 +14,7 @@ namespace DeerCoffeeShop.Application.Shift
     {
         public ShiftDto() { }
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
         public DateTime ShiftStart { get; set; }
 
@@ -29,7 +29,7 @@ namespace DeerCoffeeShop.Application.Shift
         {
             return new ShiftDto()
             {
-                Name = name,
+                name = name,
                 ShiftStart = shiftStart,
                 ShiftEnd = shiftEnd,
                 ShiftDescription = shiftDescription,

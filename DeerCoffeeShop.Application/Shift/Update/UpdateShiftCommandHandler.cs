@@ -10,26 +10,20 @@ using DeerCoffeeShop.Domain.Common.Exceptions;
 
 namespace DeerCoffeeShop.Application.Shift.Update
 {
-    public class UpdateShiftCommandHandler : IRequestHandler<UpdateShiftCommand, string>
+    public class UpdateShiftCommandHandler(IShiftRepostiry shiftRepository, ICurrentUserService currentUserService) : IRequestHandler<UpdateShiftCommand, string>
     {
-        private readonly IShiftRepostiry _shiftRepository;
-        private readonly ICurrentUserService _currentUserService;
-
-        public UpdateShiftCommandHandler(IShiftRepostiry shiftRepository, ICurrentUserService currentUserService)
-        {
-            _shiftRepository = shiftRepository;
-            _currentUserService = currentUserService;
-        }
+        private readonly IShiftRepostiry _shiftRepository = shiftRepository;
+        private readonly ICurrentUserService _currentUserService = currentUserService;
 
         public async Task<string> Handle(UpdateShiftCommand request, CancellationToken cancellationToken)
         {
-            var foundObject = await _shiftRepository.FindAsync(x => x.ID == request.ShiftId, cancellationToken);
+            var foundObject = await _shiftRepository.FindAsync(x => x.ID == request.shift_id, cancellationToken);
             if (foundObject == null)
                 throw new NotFoundException("None shift was found!");
-            foundObject.Name = request.ShiftName ?? foundObject.Name;
-            foundObject.ShiftStart = request.ShiftStart;
-            foundObject.ShiftEnd = request.ShiftEnd;
-            foundObject.ShiftDescription = request.ShiftDescription ?? foundObject.ShiftDescription;
+            foundObject.Name = request.shift_name ?? foundObject.Name;
+            foundObject.ShiftStart = request.shift_start;
+            foundObject.ShiftEnd = request.shift_end;
+            foundObject.ShiftDescription = request.shift_description ?? foundObject.ShiftDescription;
             foundObject.NguoiCapNhatID = _currentUserService.UserId;
             foundObject.NgayCapNhat = DateTime.Now;
 

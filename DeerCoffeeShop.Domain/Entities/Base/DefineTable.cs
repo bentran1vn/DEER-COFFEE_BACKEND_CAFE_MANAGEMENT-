@@ -10,7 +10,7 @@ namespace DeerCoffeeShop.Domain.Entities.Base
         public virtual required string Name { get; set; }
 
         public required string NguoiTaoID { get; set; }
-        public required DateTime NgayTao { get; set; }
+        public DateTime NgayTao { get; set; }
 
         public string? NguoiCapNhatID { get; set; }
         public DateTime? NgayCapNhat { get; set; }

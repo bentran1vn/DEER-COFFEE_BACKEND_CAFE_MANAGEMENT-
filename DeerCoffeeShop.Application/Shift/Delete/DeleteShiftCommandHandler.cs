@@ -10,16 +10,10 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.Shift.Delete
 {
-    public class DeleteShiftCommandHandler : IRequestHandler<DeleteShiftCommand, string>
+    public class DeleteShiftCommandHandler(IShiftRepostiry shiftRepostiry, ICurrentUserService currentUserService) : IRequestHandler<DeleteShiftCommand, string>
     {
-        private readonly IShiftRepostiry _shiftRepository;
-        private readonly ICurrentUserService _currentUserService;
-        
-        public DeleteShiftCommandHandler(IShiftRepostiry shiftRepostiry, ICurrentUserService currentUserService)
-        {
-            _shiftRepository = shiftRepostiry;
-            _currentUserService = currentUserService;
-        }
+        private readonly IShiftRepostiry _shiftRepository = shiftRepostiry;
+        private readonly ICurrentUserService _currentUserService = currentUserService;
 
         public async Task<string> Handle(DeleteShiftCommand request, CancellationToken cancellationToken)
         {

@@ -1,4 +1,5 @@
 ﻿using DeerCoffeeShop.Application.Common.Interfaces;
+using DeerCoffeeShop.Application.Common.Security;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,15 +9,9 @@ using System.Threading.Tasks;
 
 namespace DeerCoffeeShop.Application.Shift.Delete
 {
-    public class DeleteShiftCommand : IRequest<string>, ICommand
+    [Authorize]
+    public class DeleteShiftCommand(int id) : IRequest<string>, ICommand
     {
-        public DeleteShiftCommand() { }
-
-        public DeleteShiftCommand(int id) 
-        {
-            Id = id;
-        }
-
-        public int Id { get; set; } 
+        public int Id { get; } = id; 
     }
 }
