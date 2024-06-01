@@ -27,6 +27,9 @@ namespace DeerCoffeeShop.Infrastructure
             });
             services.AddScoped<IUnitOfWork>(provider => provider.GetRequiredService<ApplicationDbContext>());
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IShiftRepostiry, ShiftRepository>();
+            services.AddTransient<IEmployeeShiftRepository, EmployeeShiftRepository>();
+            services.AddTransient<IRestaurantRepository, RestaurantRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
             return services;
         }
