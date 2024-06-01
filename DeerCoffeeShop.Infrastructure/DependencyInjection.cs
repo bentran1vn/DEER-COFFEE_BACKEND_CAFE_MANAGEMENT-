@@ -30,6 +30,7 @@ namespace DeerCoffeeShop.Infrastructure
             services.AddTransient<IShiftRepostiry, ShiftRepository>();
             services.AddTransient<IEmployeeShiftRepository, EmployeeShiftRepository>();
             services.AddTransient<IRestaurantRepository, RestaurantRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
             return services;
         }
     }
