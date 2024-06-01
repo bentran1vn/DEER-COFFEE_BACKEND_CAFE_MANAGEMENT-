@@ -64,4 +64,4 @@ app.UseEndpoints(endpoints =>
 
 app.UseSwashbuckle(); // 'Configuration' is available on the app
 // Start the application
-app.Run();
+await app.RunAsync();
