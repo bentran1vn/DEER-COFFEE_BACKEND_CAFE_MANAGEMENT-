@@ -8,7 +8,7 @@ namespace DeerCoffeeShop.Domain.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 2)]
-        public required int EmployeeID { get; set; }
+        public int EmployeeID { get; set; }
         [Column(Order = 3)]
         public required string FullName { get; set; }
         [EmailAddress]
@@ -16,7 +16,7 @@ namespace DeerCoffeeShop.Domain.Entities
         public required string Email { get; set; }
         [Column(Order = 5)]
         [DataType(DataType.Password)]
-        public required string Password { get; set; }
+        public string? Password { get; set; }
         [Phone]
         [Column(Order = 10)]
         public required string PhoneNumber { get; set; }
@@ -28,7 +28,7 @@ namespace DeerCoffeeShop.Domain.Entities
         public required DateTime DateOfBirth { get; set; }
         [DataType(DataType.Date)]
         [Column(Order = 9)]
-        public required DateTime DateJoined { get; set; }
+        public DateTime DateJoined { get; set; }
         [Column(Order = 6)]
         public required int RoleID { get; set; }
         [ForeignKey("RoleID")]

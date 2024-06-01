@@ -12,11 +12,11 @@ namespace DeerCoffeeShop.Domain.Entities.Base
             NgayTao = NgayCapNhatCuoi = DateTime.Now;
         }
         [Key]
-        public required string ID { get; set; }
+        public string ID { get; set; }
 
 
-        public required string NguoiTaoID { get; set; }
-        public required DateTime NgayTao { get; set; }
+        public string? NguoiTaoID { get; set; }
+        public DateTime NgayTao { get; set; }
 
 
         public string? NguoiCapNhatID { get; set; }
