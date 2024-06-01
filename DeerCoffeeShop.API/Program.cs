@@ -28,6 +28,17 @@ builder.Services.ConfigureApiVersioning();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.ConfigureSwagger();
 builder.Services.ConfigurationCors();
+//allow all cors
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+               builder =>
+               {
+                   builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+               });
+});
 // Build the app
 var app = builder.Build();
 
@@ -43,7 +54,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCors("CorsPolicy");
 app.UseEndpoints(endpoints =>
 {
     _ = endpoints.MapControllers();
